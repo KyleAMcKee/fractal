@@ -1,7 +1,5 @@
 # 42 Project: Fract'ol
 
-<img src="screenshots/finalscore.png" width="350" />
-
 This program was made to explore fractals to the deepest level that the computer will allow (the limits of a double). Many fractals can be viewed at once, zooming and moving can occur at ant level, and many color schemes exist. Program is multi-threaded to make for a smoother zoom.
 
 ## Getting Started
