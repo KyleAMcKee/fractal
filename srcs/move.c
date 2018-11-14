@@ -6,7 +6,7 @@
 /*   By: kmckee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 16:45:04 by kmckee            #+#    #+#             */
-/*   Updated: 2017/12/11 22:03:42 by kmckee           ###   ########.fr       */
+/*   Updated: 2018/01/11 10:17:01 by kmckee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	move_up(t_view *v)
 {
-	v->minIm -= fabs(v->minIm * 0.1);
-	v->maxIm -= fabs(v->maxIm * 0.1);
+	v->min_im += (100 * v->im_factor) / v->zoom;
+	v->max_im += (100 * v->im_factor) / v->zoom;
 }
 
 void	move_down(t_view *v)
 {
-	v->minIm += fabs(v->minIm * 0.1);
-	v->maxIm += fabs(v->maxIm * 0.1);
+	v->min_im -= (100 * v->im_factor) / v->zoom;
+	v->max_im -= (100 * v->im_factor) / v->zoom;
 }
 
 void	move_left(t_view *v)
 {
-	v->minRe += fabs(v->minRe * 0.1);
-	v->maxRe += fabs(v->maxRe * 0.1);
+	v->min_re -= (100 * v->im_factor) / v->zoom;
+	v->max_re -= (100 * v->im_factor) / v->zoom;
 }
 
 void	move_right(t_view *v)
 {
-	v->minRe -= fabs(v->minRe * 0.1);
-	v->maxRe -= fabs(v->maxRe * 0.1);
+	v->min_re += (100 * v->im_factor) / v->zoom;
+	v->max_re += (100 * v->im_factor) / v->zoom;
 }

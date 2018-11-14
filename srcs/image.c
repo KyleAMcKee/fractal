@@ -6,7 +6,7 @@
 /*   By: kmckee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 23:35:31 by kmckee            #+#    #+#             */
-/*   Updated: 2017/12/12 21:27:04 by kmckee           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:03:51 by kmckee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,42 @@ t_view	*view_init(void)
 	t_view *v;
 
 	v = (t_view*)malloc(sizeof(t_view));
-	v->width = 1200;
-	v->height = 1200;
-	v->max_iter = 50;
-	v->mouse_x = 600;
-	v->mouse_y = 600;
+	v->width = WIDTH;
+	v->height = HEIGHT;
+	v->max_iter = 40;
+	v->mouse_x = WIDTH / 2;
+	v->mouse_y = HEIGHT / 2;
 	v->space = 2;
 	v->zoom = 1;
-	v->minRe = -2;//-2.2;
-	v->maxRe = 2;
-	v->minIm = -2;//-1.2;
-	v->maxIm = 2;//2.0;//v->minIm + (v->maxRe - v->minRe) * v->height / v->width;
-	v->reFactor = (v->maxRe - v->minRe) / (v->width);
-	v->imFactor = (v->maxIm - v->minIm) / (v->height);
+	v->min_re = -2.2;
+	v->max_re = 2.2;
+	v->min_im = -2.0;
+	v->max_im = v->min_im + (v->max_re - v->min_re) * v->height / v->width;
+	v->re_factor = (v->max_re - v->min_re) / (v->width);
+	v->im_factor = (v->max_im - v->min_im) / (v->height);
 	v->color = 1;
 	v->color_shift = 0;
 	return (v);
+}
+
+void	view_reset(t_view *v, int type)
+{
+	v->width = WIDTH;
+	v->height = HEIGHT;
+	v->max_iter = 40;
+	v->mouse_x = WIDTH / 2;
+	v->mouse_y = HEIGHT / 2;
+	v->space = 2;
+	v->zoom = 1;
+	v->min_re = -2.2;
+	v->max_re = 2.2;
+	v->min_im = -2.0;
+	v->max_im = v->min_im + (v->max_re - v->min_re) * v->height / v->width;
+	v->re_factor = (v->max_re - v->min_re) / (v->width);
+	v->im_factor = (v->max_im - v->min_im) / (v->height);
+	v->color = 1;
+	v->color_shift = 0;
+	v->fractol = type;
 }
 
 void	create_image(t_view *view)
